@@ -111,7 +111,10 @@ def check_file(filename):
     if not filename.endswith('.dat'):
         raise RuntimeError(f"Only .dat files can be submitted, found '{filename}'")
 
-    if filename.startswith('OAT15A'):
+    # filename contains the entire path, get the basename for checking
+    basename = os.path.basename(filename)
+    print(f'basename: {basename}')
+    if basename.startswith('OAT15A'):
         check_oat15a_file(filename)
         return
 
