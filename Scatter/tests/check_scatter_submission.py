@@ -6,6 +6,8 @@ Created on Tue Aug 20 10:28:19 2024
 @author: kevinholst
 """
 
+import os
+import sys
 import re
 
 
@@ -76,9 +78,13 @@ def parse_tecplot_file(filename):
 
 # Checks the ONERA OAT15A submission file
 def check_oat15a_file(filename):
+    # filename contains the entire path, get the basename for checking
+    basename = os.path.basename(filename)
+    print(f'basename: {basename}')
+
     # Try grabbing the full id, with participant id and suffix, from the file name
     try:
-        full_id = filename.split('_')[1][:-4]
+        full_id = basename.split('_')[1][:-4]
     except:
         raise RuntimeError(f"Could not parse participant id from '{filename}' filename must be of "
                            "the form 'OAT15A_[participant id with suffix].dat")
@@ -111,4 +117,7 @@ def check_file(filename):
 
 
 if __name__ == '__main__':
-    pass
+    print(sys.argv[1:])
+    for filename in sys.argv[1:]:
+        print(f'checking {filename}')
+        check_file(filename)
