@@ -80,7 +80,6 @@ def parse_tecplot_file(filename):
 def check_oat15a_file(filename):
     # filename contains the entire path, get the basename for checking
     basename = os.path.basename(filename)
-    print(f'basename: {basename}')
 
     # Try grabbing the full id, with participant id and suffix, from the file name
     try:
@@ -113,7 +112,6 @@ def check_file(filename):
 
     # filename contains the entire path, get the basename for checking
     basename = os.path.basename(filename)
-    print(f'basename: {basename}')
     if basename.startswith('OAT15A'):
         check_oat15a_file(filename)
         return
@@ -123,7 +121,7 @@ def check_file(filename):
 
 
 if __name__ == '__main__':
-    print(sys.argv[1:])
+    print(f'Modified files: {sys.argv[1:]}')
     for filename in sys.argv[1:]:
         print(f'checking {filename}')
         check_file(filename)
