@@ -95,6 +95,9 @@ def check_oat15a_file(filename):
     except:
         raise RuntimeError(f"Unable to parse participant id and suffix from '{filename}'")
 
+    if not (pid.isnumeric() and suffix.isnumeric()):
+        raise RuntimeError(f"Participant id and suffix must be numeric, found {pid}.{suffix}")
+
     # Read the tecplot file and check the data inside
     data = parse_tecplot_file(filename)
     if data['title'] != full_id:
