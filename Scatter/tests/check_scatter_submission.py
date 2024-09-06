@@ -10,7 +10,16 @@ import os
 import sys
 import re
 
-sys.exceptionhook = lambda exctype, exc, traceback: print(f'{exctype.__name__}: {exc}')
+
+def exception_handler(exception_type, exception, traceback):
+    # All your trace are belong to us!
+    print('******************************************************************')
+    print(f'{exception_type.__name__}: {exception}')
+    print('******************************************************************')
+
+
+sys.exceptionhook = exception_handler
+
 
 def parse_tecplot_file(filename):
     # open the file for reading
