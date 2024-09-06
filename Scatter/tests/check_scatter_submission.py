@@ -10,6 +10,7 @@ import os
 import sys
 import re
 
+sys.exceptionhook = lambda exctype, exc, traceback: print(f'{exctype.__name__}: {exc}')
 
 def parse_tecplot_file(filename):
     # open the file for reading
