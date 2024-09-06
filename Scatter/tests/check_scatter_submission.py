@@ -13,9 +13,11 @@ import re
 
 def exception_handler(exception_type, exception, traceback):
     # All your trace are belong to us!
-    print('******************************************************************')
+    print('********************************************************************************')
+    print('')
     print(f'{exception_type.__name__}: {exception}')
-    print('******************************************************************')
+    print('')
+    print('********************************************************************************')
 
 
 sys.excepthook = exception_handler
