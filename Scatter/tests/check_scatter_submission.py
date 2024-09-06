@@ -18,7 +18,7 @@ def exception_handler(exception_type, exception, traceback):
     print('******************************************************************')
 
 
-sys.exceptionhook = exception_handler
+sys.excepthook = exception_handler
 
 
 def parse_tecplot_file(filename):
